@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html data-mw="2000">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>remTest</title>
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">-->
+    <!--<meta name="viewport" content="width=640">-->
+    <script src="js/mobile-util.js"></script>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+    <div id="wrap">
+        <div class="section section1" id="section1">
+            <div class="box">
+                <h1 class="part" data-delay="1000">春晓</h1>
+                <p class="part" data-delay="1000">春眠不觉晓</p>
+                <p class="part" data-delay="1000">处处闻啼鸟</p>
+                <p class="part" data-delay="1000">夜来风雨声</p>
+                <p class="part" data-delay="1000">花落知多少</p>
+            </div>
+        </div>
+        <div class="section section2" id="section2">
+            <div class="box">
+                <h1 class="part" data-delay="300" data-style="leftIn">竹枝歌</h1>
+                <p class="part" data-delay="100" data-style="rightIn">月儿弯弯照九州</p>
+                <p class="part" data-delay="50" data-style="rightIn">几家欢乐几家愁</p>
+                <p class="part" data-delay="200" data-style="rightIn">几家夫妇同罗帐</p>
+                <p class="part" data-delay="400" data-style="rightIn">几个飘零在外头</p>
+            </div>
+        </div>
+        <div class="section section3" id="section3">
+            <div class="box">
+                <h1 class="part" data-delay="100" data-style="leftIn">春晓</h1>
+                <p class="part" data-delay="2000" data-style="leftIn">锄禾日当午</p>
+                <p class="part" data-delay="3000" data-style="leftIn">汗滴禾下土</p>
+                <p class="part" data-delay="4000" data-style="leftIn">谁知盘中餐</p>
+                <p class="part" data-delay="5000" data-style="leftIn">粒粒皆辛苦</p>
+            </div>
+        </div>
+        <div class="section section4" id="section4">
+            <div class="box">
+                <h1 class="part" data-delay="300" data-style="leftIn">春晓</h1>
+                <p class="part" data-delay="100" data-style="rightIn">春眠不觉晓</p>
+                <p class="part" data-delay="50" data-style="rightIn">处处闻啼鸟</p>
+                <p class="part" data-delay="200" data-style="rightIn">夜来风雨声</p>
+                <p class="part" data-delay="400" data-style="rightIn">花落知多少</p>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="js/jquery-1.9.1.js"></script>
+    <script src="js/jquery.fullPage.js"></script>
+
+    <script>
+        $(function(){
+            var timer = new Array();
+            function addAmt(dom){
+                var parts = $(dom).find('.part');
+                parts.each(function(){
+                    var ele = $(this);
+                    var time = ele.attr('data-delay');
+                    var anim = ele.attr('data-style');
+                    timer = setTimeout(function(){
+                        ele.addClass(anim);
+                    },time);
+                });
+            }
+            function rmoAmt(dom){
+                var parts = $(dom).find('.part');
+                parts.each(function(){
+                    var anim = $(this).attr('data-style');
+                    $(this).removeClass(anim);
+                    clearTimeout(timer);
+                });
+            }
+            $('#wrap').fullpage({
+                sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', '#f90'],
+                afterLoad:function(anchorLink,index){
+                    var section = $('.section').eq(index-1).attr('id');
+                    var secId = "#" + section;
+                    addAmt(secId);
+                },
+                onLeave:function(index,direction){
+                    rmoAmt('.section');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
