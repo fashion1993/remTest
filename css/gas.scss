@@ -1,0 +1,112 @@
+$ppr:640px/16/1rem;
+
+@mixin font-dpr($font-size){
+	font-size: $font-size;
+	[data-dpr="2"] & {
+		font-size: $font-size * 2;
+	}
+	[data-dpr="3"] & {
+		font-size: $font-size * 3;
+	}
+}
+@mixin linHeight-dpr($line-height){
+	line-height: $line-height;
+	[data-dpr="2"] & {
+		line-height: $line-height * 2;
+	}
+	[data-dpr="3"] & {
+		line-height: $line-height * 3;
+	}
+}
+*{
+	margin: 0;
+	padding: 0;
+	-webkit-text-size-adjust:none;
+}
+html#mobile_util{
+	font-size:$ppr*1rem;
+	background:#f7f7f9;
+	font-family:Arial,'Hiragino Sans GB','Microsoft yahei','微软雅黑',STHeitiSC-Light,sans-serif;
+}
+body{
+	width: 640px/$ppr;
+	margin:0 auto;
+	background:#f7f7f9;
+}
+.gas_tab{
+	height:88px/$ppr;
+	border-bottom:1px solid #dedfe0;
+	display:-webkit-flex;
+	align-items:center;
+	background:#fff;
+	div{
+		box-sizing:border-box;
+		float:left;
+		width:33%;
+		color:#555555;
+		border-right:1px solid #dedfe0;
+		text-align:center;
+		font-weight:bolder;
+		@include font-dpr(15px);
+		&:last-child{
+			border:none;
+		}
+	}
+}
+.gas_wrap{
+	width:100%;
+	background:#fff;
+	margin-top:22px/$ppr;
+	overflow:hidden;
+	border-bottom:2px solid #dedfe0;
+	.gas_item{
+		background:#fff;
+		width: 100%;
+		height:200px/$ppr;
+		border-top:1px solid #dedfe0;
+		.gas_content{
+			width:600px/$ppr;
+			height:144px/$ppr;
+			margin:30px/$ppr auto;
+			overflow:hidden;
+			.item_img{
+				height:100%;
+				width:190px/$ppr;
+				float:left;
+				background:red;
+				position:relative;
+				img.figure{
+					width:100%;
+				}
+				img.newest_icon{
+					position:absolute;
+					top:0;
+					left:0;
+					width:60px/$ppr;
+					height:60px/$ppr;
+				}
+			}
+			.item_text{
+				margin-left:16px/$ppr;
+				width:392px/$ppr;
+				height:100%;
+				float:right;
+				h2{
+					@include font-dpr(16px);
+					@include linHeight-dpr(25px);
+				}
+				p{
+					display: -webkit-box;
+					overflow : hidden;
+  				text-overflow: ellipsis;
+  				-webkit-line-clamp: 2;
+  				-webkit-box-orient: vertical;
+					margin-top:16px/$ppr;
+					@include font-dpr(13px);
+					@include linHeight-dpr(22px);
+					color:#919191;
+				}
+			}
+		}
+	}
+}

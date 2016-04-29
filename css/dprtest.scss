@@ -1,0 +1,25 @@
+$ppr: 640px/16/1rem;
+*{
+	margin: 0;
+	padding: 0;
+	-webkit-text-size-adjust: none;
+}
+ @mixin font-dpr($font-size){
+    font-size: $font-size;
+    [data-dpr="2"] & {
+        font-size: $font-size * 2;
+    }
+    [data-dpr="3"] & {
+        font-size: $font-size * 3;
+    }
+}
+html.mobile_util{
+	font-size:$ppr*1rem;
+}
+body{
+	width:640px/$ppr;
+	margin:0 auto;
+}
+div{
+	@include font-dpr(12px);
+}

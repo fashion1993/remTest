@@ -1,0 +1,39 @@
+{
+  "name": "wentest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "dev": "webpack-dev-server --pregress --colors"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fashion1993/remTest.git"
+  },
+  "keywords": [
+    "webpack"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fashion1993/remTest/issues"
+  },
+  "homepage": "https://github.com/fashion1993/remTest#readme",
+  "devDependencies": {
+    "babel-loader": "^6.2.4",
+    "css-loader": "^0.23.1",
+    "sass-loader": "^3.2.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.0",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "dependencies": {
+    "babel-core": "^6.7.7",
+    "file-loader": "^0.8.5",
+    "node-sass": "^3.6.0",
+    "react": "^15.0.1"
+  }
+}

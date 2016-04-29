@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!-- netease -->
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+    <!-- <link rel="stylesheet" href="css/test.css"/> -->
+    <style>
+    @media screen and (max-width:321px){
+        p{font-size:15px}
+    }
+
+    @media screen and (min-width:321px) and (max-width:400px){
+        p{font-size:16px}
+    }
+
+    @media screen and (min-width:400px){
+        p{font-size:18px}
+    }
+    </style>
+    <script>
+      (function (doc, win) {
+        var docEl = doc.documentElement,
+          isIOS = navigator.userAgent.match(/iphone|ipod|ipad/gi),
+          dpr = isIOS? Math.min(win.devicePixelRatio, 3) : 1,
+          dpr = window.top === window.self? dpr : 1, //被iframe引用时，禁止缩放
+          dpr = 1, // 首页引用IFRAME，强制为1
+          scale = 1 / dpr,
+          resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+        docEl.dataset.dpr = win.devicePixelRatio;
+        if(navigator.userAgent.match(/iphone/gi) && screen.width == 375 && win.devicePixelRatio == 2){
+          docEl.classList.add('iphone6')
+        }
+        if(navigator.userAgent.match(/iphone/gi) && screen.width == 414 && win.devicePixelRatio == 3){
+          docEl.classList.add('iphone6p')
+        }
+        var metaEl = doc.createElement('meta');
+        metaEl.name = 'viewport';
+        metaEl.content = 'initial-scale=' + scale + ',maximum-scale=' + scale + ', minimum-scale=' + scale;
+        docEl.firstElementChild.appendChild(metaEl);
+        var recalc = function () {
+            var width = docEl.clientWidth;
+            if (width / dpr > 640) {
+                width = 640 * dpr;
+            }
+            docEl.style.fontSize = 100 * (width / 640) + 'px';
+          };
+        recalc()
+        if (!doc.addEventListener) return;
+        // win.addEventListener(resizeEvt, recalc, false);
+      })(document, window);
+    
+    </script>
+</head>
+<body>
+<div class="app">
+    <div class="app__icon">
+        <img class="app__icon__img" src="http://www.meow.re/demo/screen-adaptation-in-mobileweb/icon.png">
+    </div>
+
+    <div class="app__text">
+        <h2 class="app__text__title">忍者必须死Ⅱ</h2>
+        <p class="app__text__summary">史上最萌的手游，安装量过10万。</p>
+    </div>
+
+    <a class="app__button" href="#">下载</a>
+    <i class="app__label"></i>
+</div>
+<p>我joi请叫我i哦气温还将大佛i去哦期货万佛前哦七武海日前往啤酒</p>
+
+<script src="js/jquery-1.9.1.js"></script>
+<!-- <script src="js/mobile-util.js"></script> -->
+ </body>
+</html>

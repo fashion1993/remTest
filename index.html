@@ -5,8 +5,7 @@
     <title>remTest</title>
     <!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">-->
     <!--<meta name="viewport" content="width=640">-->
-    <script src="js/mobile-util.js"></script>
-    <link rel="stylesheet" href="css/style.css"/>
+   <link rel="stylesheet" href="css/style1.css"/>
 </head>
 <body>
     <div id="wrap">
@@ -48,38 +47,43 @@
         </div>
     </div>
 
-
+    <script src="bundle.js"></script>
     <script src="js/jquery-1.9.1.js"></script>
     <script src="js/jquery.fullPage.js"></script>
-
+    <script src="js/mobile-util.js"></script>
     <script>
         $(function(){
-            var timer = new Array();
+            var timer = [];
             function addAmt(dom){
-                var parts = $(dom).find('.part');
+                var parts = dom.find('.part');
                 parts.each(function(){
                     var ele = $(this);
                     var time = ele.attr('data-delay');
                     var anim = ele.attr('data-style');
-                    timer = setTimeout(function(){
+                    timer.push(setTimeout(function(){
                         ele.addClass(anim);
-                    },time);
+                    },time));
                 });
             }
             function rmoAmt(dom){
-                var parts = $(dom).find('.part');
+                var parts = dom.find('.part');
                 parts.each(function(){
                     var anim = $(this).attr('data-style');
                     $(this).removeClass(anim);
-                    clearTimeout(timer);
+//                    clearTimeout(timer);
+                    timer.forEach(
+                            function(a){
+                                clearTimeout(a);
+                            }
+                    )
+                    timer = [];
                 });
             }
             $('#wrap').fullpage({
                 sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', '#f90'],
                 afterLoad:function(anchorLink,index){
-                    var section = $('.section').eq(index-1).attr('id');
-                    var secId = "#" + section;
-                    addAmt(secId);
+                    var section = $('.section').eq(index-1);
+                    addAmt(section);
                 },
                 onLeave:function(index,direction){
                     rmoAmt('.section');
